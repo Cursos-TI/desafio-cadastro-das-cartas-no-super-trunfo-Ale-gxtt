@@ -4,8 +4,10 @@
 #define CASAS_B 5
 #define CASAS_R 8
 
+#define CASAS_CAV_V 2
+#define CASAS_CAV_H 1
+
 int main() {
-    
     
     printf("Movimento da TORRE:\n");
     
@@ -36,6 +38,25 @@ int main() {
         printf("Esquerda\n");
         contador_r++;
     } while (contador_r < CASAS_R);
+    
+    printf("\n");
+    
+    
+    printf("Movimento do CAVALO:\n");
+    
+    printf("\n--- Simulação do Cavalo com Loops Aninhados ---\n");
+    
+    for (int i = 0; i < CASAS_CAV_V; i++) {
+        printf("Baixo\n");
+        
+        if (i == CASAS_CAV_V - 1) {
+            int contador_h = 0;
+            while (contador_h < CASAS_CAV_H) {
+                printf("Esquerda\n");
+                contador_h++;
+            }
+        }
+    }
     
     printf("\nFIM DA SIMULACAO\n");
     
