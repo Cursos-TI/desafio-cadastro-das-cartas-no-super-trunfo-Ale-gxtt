@@ -4,57 +4,76 @@
 #define CASAS_B 5
 #define CASAS_R 8
 
-#define CASAS_CAV_V 2
-#define CASAS_CAV_H 1
+#define PASSOS_CAV_V 2
+#define PASSOS_CAV_H 1
+
+void mover_torre_recursivo(int casas_restantes) {
+    if (casas_restantes <= 0) {
+        return;
+    }
+    printf("Direita\n");
+    mover_torre_recursivo(casas_restantes - 1);
+}
+
+void mover_bispo_recursivo(int casas_restantes) {
+    if (casas_restantes <= 0) {
+        return;
+    }
+    printf("Cima, Direita\n");
+    mover_bispo_recursivo(casas_restantes - 1);
+}
+
+void mover_rainha_recursivo(int casas_restantes) {
+    if (casas_restantes <= 0) {
+        return;
+    }
+    printf("Esquerda\n");
+    mover_rainha_recursivo(casas_restantes - 1);
+}
+
+void mover_bispo_loops_aninhados(int casas_max) {
+    for (int v = 1; v <= casas_max; v++) {
+        printf("Cima\n");
+        for (int h = 0; h < 1; h++) {
+            printf("Direita\n");
+        }
+    }
+}
+
 
 int main() {
     
-    printf("Movimento da TORRE:\n");
-    
-    for (int i = 1; i <= CASAS_T; i++) {
-        printf("Direita\n");
-    }
-    
+    printf("--- Movimento da TORRE (Recursividade - Direita) ---\n");
+    mover_torre_recursivo(CASAS_T);
     printf("\n");
     
-    
-    printf("Movimento do BISPO:\n");
-    
-    int contador_b = 1;
-    
-    while (contador_b <= CASAS_B) {
-        printf("Cima, Direita\n");
-        contador_b = contador_b + 1;
-    }
-    
+    printf("--- Movimento da RAINHA (Recursividade - Esquerda) ---\n");
+    mover_rainha_recursivo(CASAS_R);
     printf("\n");
     
-    
-    printf("Movimento da RAINHA:\n");
-    
-    int contador_r = 0;
-    
-    do {
-        printf("Esquerda\n");
-        contador_r++;
-    } while (contador_r < CASAS_R);
-    
+    printf("--- Movimento do BISPO (Recursividade - Cima e Direita) ---\n");
+    mover_bispo_recursivo(CASAS_B);
     printf("\n");
     
+    printf("--- Movimento do BISPO (Loops Aninhados - Cima e Direita) ---\n");
+    mover_bispo_loops_aninhados(CASAS_B);
+    printf("\n");
     
-    printf("Movimento do CAVALO:\n");
+    printf("--- Movimento do CAVALO (Loops Aninhados Complexos - 2 Cima, 1 Direita) ---\n");
     
-    printf("\n--- Simulação do Cavalo com Loops Aninhados ---\n");
-    
-    for (int i = 0; i < CASAS_CAV_V; i++) {
-        printf("Baixo\n");
+    for (int v = 1; v <= PASSOS_CAV_V; v++) {
         
-        if (i == CASAS_CAV_V - 1) {
-            int contador_h = 0;
-            while (contador_h < CASAS_CAV_H) {
-                printf("Esquerda\n");
-                contador_h++;
-            }
+        printf("Cima\n");
+
+        if (v < PASSOS_CAV_V) {
+            continue;
+        }
+
+        for (int h = 1; h <= PASSOS_CAV_H; h++) {
+            
+            printf("Direita\n");
+
+            break; 
         }
     }
     
